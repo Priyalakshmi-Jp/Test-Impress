@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form{
+	margin: 0 auto;
+	padding:200px;
+	width:50%;
+}
+input{
+	margin-bottom: 20px;
+}
+table{
+	font-family:Times new roman, serif;
+	border-collapse:collapse;
+	width: 100%;
+}
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even){
+	background-color: #dddddd
+}
+</style>
+<body>
+<form id="UsrForm" align="center">
+	<input type="text" id="Name" placeholder="Name" required><br>
+	<input type="Email" id="Email" placeholder="Email" required><br>
+	<input type="submit" value="Add User">
+</form>
+<table id="UsrTable" align="center" style="width:200px;">
+	<tr>
+		<th>id</th>
+		<th>Name</th>
+		<th>Email</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>test</td>
+		<td>tss</td>
+	</tr>
+</table>
+<script>
+document.getElementById('UsrForm').addEventListener('submit', function(event){
+	event.preventDefault();
+	var name = document.getElementById('Name').value;
+        var email = document.getElementById('Email').value;
+
+        // Create a new row in the table
+        var table = document.getElementById('UsrTable').getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        // Populate cells with data
+        cell1.innerText = table.rows.length; // id will be Auto incremented
+        cell2.innerText = name;
+        cell3.innerText = email;
+
+	document.getElementById('Name').value = '';
+        document.getElementById('Email').value = '';
+});
+</script>
+</body>
+</head>
+</html>
+
